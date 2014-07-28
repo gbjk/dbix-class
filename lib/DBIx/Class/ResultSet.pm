@@ -4109,6 +4109,13 @@ L<SQL::Abstract/Literal SQL and value type operators>):
         }
     ]
 
+Like elsewhere, literal SQL or literal values can be included by
+using a scalar reference, and these values will be available in the result
+with C<get_column>:
+
+    # equivalent SQL: SELECT 1, "a string", IF(x,1,2) ...
+    columns => [ { foo => \1, bar => \'"a string"', baz => \'IF(x,1,2)' } ]
+
 =head2 +columns
 
 B<NOTE:> You B<MUST> explicitly quote C<'+columns'> when using this attribute.
