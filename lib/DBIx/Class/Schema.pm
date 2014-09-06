@@ -11,6 +11,7 @@ use Scalar::Util qw/weaken blessed/;
 use DBIx::Class::_Util qw(refcount quote_sub);
 use Devel::GlobalDestruction;
 use namespace::clean;
+use Module::Loaded;
 
 __PACKAGE__->mk_classdata('class_mappings' => {});
 __PACKAGE__->mk_classdata('source_registrations' => {});
@@ -1059,9 +1060,16 @@ sub _copy_state_from {
   my ($self, $from) = @_;
 
   $self->class_mappings({ %{$from->class_mappings} });
-  $self->source_registrations({ %{$from->source_registrations} });
+
+  my $sregs = { %{$from->source_registrations} };
+  $self->source_registrations($sregs);
 
   foreach my $source_name ($from->sources) {
+
+    # Skip any source that isn't yet created
+    # This allows lazy to work past connect
+    next unless is_loaded($source_name);
+
     my $source = $from->source($source_name);
     my $new = $source->new($source);
     # we use extra here as we want to leave the class_mappings as they are
