@@ -1,5 +1,9 @@
 Revision history for DBIx::Class
 
+0.08271 2014-09-07 16:00 (UTC)
+    * Thermeon fork
+    * Lazy load feature documented here: https://github.com/dbsrgits/dbix-class/pull/59
+
 0.08270 2014-01-30 21:54 (PST)
     * Fixes
         - Fix 0.08260 regression in DBD::SQLite bound int handling. Inserted
