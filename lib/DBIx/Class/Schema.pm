@@ -11,7 +11,6 @@ use Scalar::Util qw/weaken blessed/;
 use DBIx::Class::_Util qw(refcount quote_sub);
 use Devel::GlobalDestruction;
 use namespace::clean;
-use Module::Loaded;
 
 __PACKAGE__->mk_classdata('class_mappings' => {});
 __PACKAGE__->mk_classdata('source_registrations' => {});
