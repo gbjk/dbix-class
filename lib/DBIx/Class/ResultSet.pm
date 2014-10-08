@@ -3320,6 +3320,8 @@ source alias of the current result set:
     });
   }
 
+The current table alias can be altered with L</alias>.
+
 =cut
 
 sub current_source_alias {
