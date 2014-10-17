@@ -1,5 +1,9 @@
 Revision history for DBIx::Class
 
+0.082801 2014-10-17 14:18 (UTC)
+    * Thermeon fork
+        - Lazy load feature documented here: https://github.com/dbsrgits/dbix-class/pull/59
+
     * Misc
         - Adjust internals to accommodate fixed API in SQL::Abstract
 
