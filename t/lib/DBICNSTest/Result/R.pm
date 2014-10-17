@@ -8,6 +8,6 @@ __PACKAGE__->table('r');
 __PACKAGE__->add_columns('r');
 __PACKAGE__->belongs_to(
   a => 'DBICNSTest::Result::A',
-  { 'foreign.a' => 'this.r' },
+  { 'foreign.a' => 'self.r' },
 );
 1;
